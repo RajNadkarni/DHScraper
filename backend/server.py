@@ -8,7 +8,8 @@ if response.status_code == 200:
     soup = BeautifulSoup(response.content, 'html.parser')
     locations = soup.find_all(class_='locations')
     for item in locations:
-        print(item.text.strip())
+        link = item.find('a').get('href')
+        print(link)
 
 else:
     print("Failed to retrieve the webpage")
