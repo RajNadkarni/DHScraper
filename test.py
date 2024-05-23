@@ -15,7 +15,7 @@ def check_food_availability(food):
 
     response = s.get(url)
 
-    results = {}  # Initialize an empty dictionary to store the results
+    results = {}
 
     if response.status_code == 200:
         soup = BeautifulSoup(response.content, 'html.parser')
@@ -48,11 +48,17 @@ def check_food_availability(food):
                                 categories[category_text] = True
                                 break
 
-            results[location] = categories
-
+            # Filter out the meal times where the food is not available
+            available_meals = {k: v for k, v in categories.items() if v}
+            if available_meals:
+                results[location] = available_meals
     else:
         return json.dumps({"error": "Failed to fetch the page"})
-    return json.dumps(results)
+
+    if results:
+        return json.dumps(results)
+    else:
+        return json.dumps({"error": "No food found"})
 
 
 # Test the function
