@@ -76,5 +76,10 @@ def check_food():
     return jsonify(json.loads(result))
 
 
+@app.route('/best_food', methods=['GET'])
+def best_food():
+    return jsonify(json.loads('{"TODO": "TODO"}'))
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
