@@ -60,7 +60,7 @@ def check_food_availability(food):
     else:
         return json.dumps({"name": food, "error": "Failed to fetch the page"})
 
-    if results:
+    if len(results.keys()) > 1:
         return json.dumps(results)
     else:
         return json.dumps({"name": food, "error": "No food found"})
