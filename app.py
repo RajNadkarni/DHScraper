@@ -20,7 +20,7 @@ def check_food_availability(food):
 
     response = s.get(url)
 
-    results = {}
+    results = {"name": food}
 
     if response.status_code == 200:
         soup = BeautifulSoup(response.content, 'html.parser')
@@ -58,12 +58,12 @@ def check_food_availability(food):
             if available_meals:
                 results[location] = available_meals
     else:
-        return json.dumps({"error": "Failed to fetch the page"})
+        return json.dumps({"name": food, "error": "Failed to fetch the page"})
 
     if results:
         return json.dumps(results)
     else:
-        return json.dumps({"error": "No food found"})
+        return json.dumps({"name": food, "error": "No food found"})
 
 
 @app.route('/check_food', methods=['POST'])
