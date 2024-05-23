@@ -3,13 +3,8 @@ from bs4 import BeautifulSoup
 import urllib3
 import re
 import json
-from flask import Flask, request, jsonify
-from flask_cors import CORS
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
 
 url = "https://nutrition.sa.ucsc.edu/"
 
@@ -54,20 +49,14 @@ def check_food_availability(food):
                                 break
 
             results[location] = categories
+
     else:
         return json.dumps({"error": "Failed to fetch the page"})
     return json.dumps(results)
 
 
-@app.route('/check_food', methods=['POST'])
-def check_food():
-    data = request.json
-    food = data.get('food')
-    if not food:
-        return jsonify({"error": "No food item provided"}), 400
-    result = check_food_availability(food)
-    return jsonify(json.loads(result))
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+# Test the function
+if __name__ == "__main__":
+    food_name = input("Enter the name of the food to check: ")
+    result = check_food_availability(food_name)
+    print(result)
