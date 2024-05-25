@@ -2,7 +2,7 @@ name: Check DH
 
 on:
   schedule:
-    - cron: '7 4 * * *'
+    - cron: '11 4 * * *'
 
 jobs:
   build:
