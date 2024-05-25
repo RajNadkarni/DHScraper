@@ -46,16 +46,25 @@ def notify(food):
     
 if __name__ == "__main__":
 
-    mail_list = ["ranadkar@ucsc.edu", "arvora@ucsc.edu", "aiyhuang@ucsc.edu"]
-    # mail_list = ["ranadkar@ucsc.edu"]
-    food_list = ["Daal Saag", "Steamed Rice"]
+    mail_dict = {
+        "ranadkar@ucsc.edu": ["Dal Saag", "Steamed Rice"],
+        "arvora@ucsc.edu": ["Dal Saag"],
+        "aiyhuang@ucsc.edu": ["Dal Saag"],
+        "jchow10@ucsc.edu": ["New England Clam Chowder"]
+    }
 
-    out = ""
-    for food in food_list:
-        out += notify(food)
+    # mail_dict = {
+    #     "ranadkar@ucsc.edu": ["Dal Saag"],
+    # }
 
-    if len(out) > 0:
-        print(out)
-        send_email("Dining Hall Foods", out, "ilovedaalsaag@gmail.com", mail_list, PASS, "Daal Saag")
-    else:
-        print("No food available")
+    # TODO: make it not repeatedly call check_food_availability
+    for email, food_list in mail_dict.items():
+        out = ""
+        for food in food_list:
+            out += notify(food)
+
+        if len(out) > 0:
+            print(out)
+            send_email("Dining Hall Foods", out, "ilovedaalsaag@gmail.com", [email], PASS, "Daal Saag")
+        else:
+            print(f"No food available for {email}")
