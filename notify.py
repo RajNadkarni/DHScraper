@@ -48,7 +48,7 @@ if __name__ == "__main__":
 
     mail_list = ["ranadkar@ucsc.edu", "arvora@ucsc.edu", "aiyhuang@ucsc.edu"]
     # mail_list = ["ranadkar@ucsc.edu"]
-    food_list = ["Daal Saag"]
+    food_list = ["Daal Saag", "Steamed Rice"]
 
     out = ""
     for food in food_list:

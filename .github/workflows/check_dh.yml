@@ -2,7 +2,7 @@ name: Check DH
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '45 3 * * *'
   workflow_dispatch:
 
 jobs:
