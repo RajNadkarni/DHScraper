@@ -26,7 +26,7 @@ def check_food_availability(food):
         soup = BeautifulSoup(response.content, 'html.parser')
         locations = soup.find_all(class_='locations')
 
-        links = [item.find('a').get('href') for item in locations[:3]]
+        links = [item.find('a').get('href') for item in locations[:5]]
         for link in links:
             location = re.search(
                 r'locationName=(.+?)&', link).group(1).replace('+', ' ').replace('%2f', '/')
