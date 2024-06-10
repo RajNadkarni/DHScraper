@@ -9,6 +9,7 @@ from app import check_food_availability
 load_dotenv()
 PASS = os.getenv("APP_PASS")
 
+
 def send_email(subject, message, from_email, to_emails, password, from_name=None):
     try:
         server = smtplib.SMTP('smtp.gmail.com: 587')
@@ -29,26 +30,29 @@ def send_email(subject, message, from_email, to_emails, password, from_name=None
     except Exception as e:
         print("failed to send mail to %s: %s" % (msg['To'], str(e)))
 
+
 def notify(food):
     avail = check_food_availability(food)
 
     data = json.loads(avail)
-    if("error" in data):
+    if ("error" in data):
         return ""
 
     data_iter = iter(data.items())
     next(data_iter)
 
     result = f"{food} is available at:\n"
-    for location, times in data_iter: 
-        result += f"\t{location} during:\n" + '\n'.join("\t- " + t for t in times) + "\n"
+    for location, times in data_iter:
+        result += f"\t{location} during:\n" + \
+            '\n'.join("\t- " + t for t in times) + "\n"
     return result + "\n"
-    
+
+
 if __name__ == "__main__":
 
     mail_dict = {
         "ranadkar@ucsc.edu": ["Dal Saag"],
-        "arvora@ucsc.edu": ["Dal Saag"],
+        "arvora@ucsc.edu": ["Dal Saag", "Sesame Yakisoba Noodles"],
         "aiyhuang@ucsc.edu": ["Dal Saag"],
         "jchow10@ucsc.edu": ["New England Clam Chowder"],
         "jmehta1@ucsc.edu": ["Dal Saag", "Potato Samosas"]
@@ -66,6 +70,7 @@ if __name__ == "__main__":
 
         if len(out) > 0:
             print(out)
-            send_email("Dining Hall Foods", out, "ilovedaalsaag@gmail.com", [email], PASS, "Daal Saag")
+            send_email("Dining Hall Foods", out,
+                       "ilovedaalsaag@gmail.com", [email], PASS, "Daal Saag")
         else:
             print(f"No food available for {email}")
