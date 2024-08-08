@@ -9,6 +9,7 @@ from app import check_food_availability
 load_dotenv()
 PASS = os.getenv("APP_PASS")
 
+# hi
 
 def send_email(subject, message, from_email, to_emails, password, from_name=None):
     try:
