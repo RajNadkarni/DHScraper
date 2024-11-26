@@ -53,7 +53,8 @@ if __name__ == "__main__":
 
     mail_dict = {
         "ranadkar@ucsc.edu": ["Dal Saag"],
-        "arvora@ucsc.edu": ["Dal Saag", "Sesame Yakisoba Noodles"],
+        "arvora@ucsc.edu": ["Dal Saag"],
+        "aadisharmahope@gmail.com": ["Dal Saag"],
         "aiyhuang@ucsc.edu": ["Dal Saag"],
         "jchow10@ucsc.edu": ["New England Clam Chowder"],
         "jmehta1@ucsc.edu": ["Dal Saag", "Potato Samosas"]
