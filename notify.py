@@ -52,12 +52,13 @@ def notify(food):
 if __name__ == "__main__":
 
     mail_dict = {
-        "ranadkar@ucsc.edu": ["Dal Saag"],
+        "ranadkar@ucsc.edu": ["Dal Saag", "Orange Glazed Chicken"],
         "arvora@ucsc.edu": ["Dal Saag"],
         "aadisharmahope@gmail.com": ["Dal Saag"],
         "aiyhuang@ucsc.edu": ["Dal Saag"],
         "jchow10@ucsc.edu": ["New England Clam Chowder"],
-        "jmehta1@ucsc.edu": ["Dal Saag", "Potato Samosas"]
+        "jmehta1@ucsc.edu": ["Dal Saag", "Potato Samosas"],
+        "ascliu@ucsc.edu": ["Orange Glazed Chicken"],
     }
 
     # mail_dict = {
